@@ -1,0 +1,598 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>dabian</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='答辩陈述稿'><span>答辩陈述稿</span></h1><p><span>各位老师中午/下午好！我是18级计科一班的刘展鹏，我的论文题目是《基于深度神经网络与脑电信号的情绪识别研究》。我的论文指导老师是张星明老师。</span></p><p><span>下面，我将从研究背景，实验设计，实验内容，总结展望来介绍我的论文研究。</span></p><h2 id='研究动机'><span>研究动机：</span></h2><p><span>首先是关于选题原因：</span></p><ul><li><span>一方面是出于个人兴趣：情绪识别作为情感计算中不可缺少的一部分，通过用户的行为和生理反应来预测和估计相应的情绪状态。增进了人机交互，如虚拟现实、驾驶辅助、游戏，还有助于精神病学治疗心理障碍。</span></li><li><span>另一方面是目前基于脑电信号进行情绪识别研究，是一个具有重要意义的研究方向之一。传统的监督学习人工提取特征且存在较大误差，深度学习对于解决缺少标签的脑电信号分类、标签集获取困难、人工标注耗时等实际问题具有重要意义</span></li></ul><h2 id='国内外研究综述'><span>国内外研究综述</span></h2><h3 id='脑电信号及情绪概述'><span>脑电信号及情绪概述</span></h3><p><span>使用放置在头皮表面的多个电极能够提取脑电信号，这是一种非侵入性监测技 术。如图 2-1（B）所示，脑电信号记录了皮质自发电活动的频率和振幅，并检测脑电 生理学的变化。脑电信号包含丰富的脑电生理信息，对于从神经生理学的角度直接准确地解释情绪具有重要意义。</span></p><p><img src="https://s2.loli.net/2022/06/02/LVFMDAShOd4TgzN.jpg" alt="Brain neurophysiological mechanisms" style="zoom: 50%;" /></p><p><span>在现有的研究中，情绪通常由两种类型的模型表征：离散模型和维度模型。</span></p><p><span>维度模型提供了一种更有效的方法，可以从多个维度 （例如，效价，唤醒）量化和表征情绪的类型和强度。在这里，效价(Valence)是指愉 悦或不愉快的情绪类型。唤醒(Arousal)测量唤起情绪的强度，其中兴奋的特征是高唤 醒值，而无聊具有低唤醒值。喜悦可以被描述为一种具有高效价和高唤醒的情绪。</span></p><p><img src="https://s2.loli.net/2022/06/02/Pqt24bGfmgVy8Xp.jpg" alt="Emotion models" style="zoom: 50%;" /></p><h3 id='基于脑电信号情绪识别相关理论'><span>基于脑电信号情绪识别相关理论</span></h3><p><span>目前许多关于脑电信号的情绪识别，根据采用的技术主要分为两类，分别是基于传统的机器学习和深度学习。 </span></p><p><span>传统的机器学习方法主要通过人工提取特征，即为监督学习。监督学习分类器建立了特征与标签的映射关系，并在标签信息的指导下修改分类模型的参数。一般来 说，通过使用基于监督学习的分类模型，可以获得更高的识别精度。使用监督学习算法的情绪分类，如朴素贝叶斯、概率神经网络（PNN）、SVM 和 KNN，已经在视频触发 EEG-情绪数据库中得到广泛验证。</span></p><p><span>对比起传统的监督学习人工提取特征且存在较大误差，深度学习方法在近年来大力发展与实践。与监督学习相反，无监督学习中没有可用的标签信息。通过对未标记数据采用聚类或特征分析方法，无监督学习分类器检测学习脑电图特征之间的潜在规律，然后从这些未标记的脑电图特征中推断出可能的类别信息。无监督学习模型是专门针对无标签数据分类而设计的，对于解决缺少标签的脑电信号分类、标签集获取困难、人工标注耗时等实际问题具有重要意义，同时也更好地适应跨学科分类器构建中的个体差异。CNN,GCNN,DGCNN等</span></p><p>&nbsp;</p><p><span>（插入一个对比图）</span></p><h2 id='实验框架'><span>实验框架 </span></h2><h3 id='实验基本架构'><span>实验基本架构</span></h3><p><img src="https://s2.loli.net/2022/06/02/RoniIYfP3LUkKsN.png" alt="module_view" style="zoom: 33%;" /></p><p><span>本研究的结构框架如上图，主要使用了对抗神经网络，残差神经网络，循环神经网络（GRU），其中，基于神经网络的自编码器，结合GRU模块，作为对抗神经网络的生成器，产生一个“虚假的”数据。与原始真实的数据一同输入判别器，起到一个互相改进的功能。这里的判别器使用了卷积神经网络。</span></p><ol start='' ><li><h4 id='基于神经网络的自编码器'><span>基于神经网络的自编码器</span></h4><p><img src="https://s2.loli.net/2022/06/02/AY5cvBlog7UQpVm.jpg" referrerpolicy="no-referrer" alt="img"></p><p><span>一般来说，我们希望自编码器能够很好地重建输入。同时，它还应该创建一个有用且有意义的潜在表示 (图 1 中编码器部分的输出)。例如，手写数字上的潜在特征可以是写每个数字所需的行数，或者每条线的角度以及它们之间的连接方式。</span></p><p><span>这种潜在表示法（如何写出每个数字）对于各种任务（例如可用于分类或聚类的实例特征提取）仅仅理解</span><a href='https://www.zhihu.com/search?q=数据集&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra={&quot;sourceType&quot;%3A&quot;answer&quot;%2C&quot;sourceId&quot;%3A2403114793}'><span>数据集</span></a><span>的基本特征都非常有用。</span></p><p><span>对于损失函数，使用MSE均方误差。输入脑电信号为x∈R^(C×T) 输出的脑电重建信号为 y∈R^(C×T)损失函数是 loss=</span><span>|</span><span>X-Y</span><span>|</span><span>_2^2。</span></p><p><span>在这里编码器和解码器使用了残差神经网络，在下文中会简单的介绍。</span></p><p>&nbsp;</p></li><li><h4 id='循环神经网络gru'><span>循环神经网络(GRU)</span></h4><p><span>对于脑电信号来说，在不同时间点提取的特征之间应该有依赖关系，每个时间点的特征都不是孤立的。对于连续数据，RNN,LSTM,GRU,的自编码器模型都能很好的工作，拥有很好的性能，为了加强对时间序列信号的特征描述，将在上文中提出的架构中加入循环神经网络模块，与卷积神经网络相结合发挥更好的优势。在编码器中，卷积层在每一个时间点将脑电信号的浅层特征提取，然后输入循环层，提取为一个完整的深层特征。在解码器中，做的是相反的工作，将完整的深层特征，预测为每个时间点的特征，然后使用反卷积层重建。</span></p><p><img src="https://s2.loli.net/2022/06/02/7oCYDORQbfVlkMy.png" alt="image-20220602234046497" style="zoom: 67%;" /></p><p><span>对于输出ℎ𝑡 , 门控信号（这里的𝑧𝑡 ）的范围为 0~1。门控信号的大小代表了信息记 忆与遗忘的程度，越大记忆越多。GRU 对比 LSTM 简洁的一点在于，仅仅使用了同一 个门控𝑧𝑡，就进行遗忘和选择记忆在同时进行。</span></p><p>&nbsp;</p></li><li><h4 id='对抗神经网络gan'><span>对抗神经网络(GAN)</span></h4><p><span>一个标准的生成对抗网络由两个相互对抗的模型组成，它们都是参数化的深度神经网络。生成器 G 接受随机噪声，使用反卷积网络生成合成数据变量输入，而判别器  D 一般使用二分类神经网络来构建，目的是识别样本是来自真实数据分布 Xr 还是来 自生成的数据分布 Xg。换句话说，生成器可以通过判别器得到它生成的图像和数据集图像分布是否一致的反馈，而判别器则可以通过生成器得到更多的训练样本。</span></p></li><li><h4 id='残差神经网络resnet'><span>残差神经网络(RESNET)</span></h4><p><span>为了解决退化问题，对于一个堆积层结构（几层堆积而成）当输入为 x 时其学习 到的特征记为 H(x) ，现在我们希望其可以学习到残差 𝐹(𝑥) = 𝐻(𝑥) − 𝑥 ，这样原始的 学习特征为 𝐹(𝑥) + 𝑥 。因为残差学习相比原始特征直接学习更容易。当残差为 0 时， 此时为恒等映射𝐻(𝑥) = 𝑥，网络性能不会下降，但是在实际上残差不会为 0，不过这也 会使得堆积层在输入特征基础上学习到新的特征，从而拥有更好的性能。</span></p><p><img src="https://s2.loli.net/2022/06/03/eibIN4VDfOaTkwR.png" referrerpolicy="no-referrer" alt="image-20220603125820882"></p><p><img src="https://s2.loli.net/2022/06/03/CZ8ca1jMSonHkPm.png" referrerpolicy="no-referrer" alt="image-20220603125907778"></p><ol start='5' ><li><p><span>超图</span></p><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Hypergraph-wikipedia.svg/1280px-Hypergraph-wikipedia.svg.png" alt="img" style="zoom: 33%;" /></p><p><span>超图（Hypergraph）相对于普通图来说，可以更加精准的描述，多对多的对象关系。普通图中，一条边包仅含两个顶点，在超图中，边被称为超边（hyperedge），一条超边可以包含多个顶点，对应的定点数更多。</span></p><p><span>\1) 根据输入的相似矩阵的生成方式（NCUT）构建样本的相似矩阵S</span></p><p><span>\2) 根据相似矩阵S构建邻接矩阵W，构建度矩阵D</span></p><p><span>\3) 计算出拉普拉斯矩阵 L </span></p><p><span>\4) 构建标准化后的拉普拉斯矩阵D^(-1\/2) LD^(-1\/2)</span></p><p><span>\5) 计算D^(-1\/2) LD^(-1\/2)最小的k_1个特征值所各自对应的特征向量f</span></p><p><span>\6) 将各自对应的特征向量f组成的矩阵按行标准化，最终组成n×k_1维的特征矩阵</span></p><p><span>\7) 对F中的每一行作为一个k_1维的样本，共n个样本，用输入的聚类方法进行聚类，聚类维数为k_2。</span></p><p>&nbsp;</p></li></ol><hr /></li></ol><h2 id='实验内容'><span>实验内容</span></h2><h3 id='数据集seed）'><span>数据集（SEED）</span></h3><p><span>SEED数据集包含对象观看电影剪辑时的脑电信号。仔细选择影片剪辑，以引起不同类型的情感，包括积极（positive），消极（negative）和中性(neutral)三种情感。数据下采样到200Hz。应用了0-75Hz的带通频率滤波器。我们提取了与每部电影的时长相对应的脑电图片段。总共有45个.mat（Matlab）文件，每个实验一个，每个受试者进行实验三次，间隔约一周15人X3次=45。实验将在SEED数据集的差分熵（DE）特征上进行（Zheng 等 [46] 在识别正性、中性和负性 3 种情绪的实验中, 使用 DE 作为特征获得的识别准确率高于其他特征.</span></p><h3 id='训练流程'><span>训练流程</span></h3><p><span>先说一下实验参数（表格），大概说一下流程训练模型，loss什么的，然后聚类分类，最后判断准确性即可。</span></p><p><span>在本次实验中，为了评估对混合卷积对抗神经网络的改进——残差混合卷积网络的性能，验证相关模块对准确率的影响。接下来将以 CNN-RNN-GAN 网络为基准进行评判，与本课题提出的残差神经网络模块进行对比。为了探究网络深度对于残差神经网络本身效果的影响，实验通过改变不同层数的残差块，确定了一个最佳的层数值。以达到一个最佳效果。本课题也同样会 与监督学习网络对比，以说明无监督的学习的具体学习效果。以上的实验都将在脑电 信号的 SEED 数据集的差分熵 (DE) 特征上进行。</span></p><p><span>SEED 数据集中，每次实验包含 15 个 trails，每个实验者需要做 3 次实验，一共有 15 名受试者。对于每次实验，我们使用每个受试者前 9 个数据作为数据训练集，6 个 作为测试集。</span></p><h3 id='实验结果'><span>实验结果</span></h3><p><span>实验内容的核心是得出了使用残差神经网络改进了混合神经网络的结构，对于情绪识别准确率有提升。</span></p><p><span>本课题改进的残差神经网络与原混合卷积神经网络（CNN-RNN-GAN）在 SEED  数据集中 DE 特征上评估的分类准确率/标准差。</span></p><p><span>根据表 4-2，图 4-1 所示，本课题对加入残差神经网络模块后的无监督混合神经网络 模型，准确率有所上升，对比原 59.6%，本课题改进的方法为 62.7%，有 3.1%的提升，说明残差神经网络具有较好的训练效果。但与有监督的学习，仍有差距。不过对比带迁移学习的有监督学习方法 TCA，本课题改进的神经网络已经十分接近，而且无监督的学习，减少了人工标注等问题，仍然具有可以选用的优势。</span></p><p>&nbsp;</p><p><span> 对于使用不同层数的残差块，对于模型训练的效果也不同。下图给出不同层数对 应学习准确率。使用两个残差块效果最好准确率达到了 62.7%，初步猜测是脑电信号 对比残差网络常用的图像识别中，脑电信号的维度较小，隐藏的特征不需要特别大的 层数即可抽取。</span></p><p>&nbsp;</p><p><span>损失函数如图所示，可以看出收敛比较快而且最后的loss大约是在0.005左右。</span></p><p>&nbsp;</p><p><span>另外，本研究还对GAN的训练加入了梯度惩罚，用一种梯度惩罚的方法替换 clip weights，让判别器在该浪的地方浪，不该浪的地方不浪。而 Gradient penalty 方案可以让每一层的梯度都比较稳定。</span></p><p>&nbsp;</p><p><span>引入了梯度惩罚（Gradient Penalty）。让判别器的梯度传导比较稳定，减少梯度爆炸或者梯度消失的问题。</span></p><p><span>加入梯度惩罚后，识别的准确率不仅没有提升反而下降了，不过准确率仍然偏差不大。在研究发现，可能是因为使用了批归一化（BN）导致的，也可能是此方法不适用本模型。</span></p><p>&nbsp;</p><h2 id='总结'><span>总结</span></h2><p><span>接下来，我还想谈谈研究的创新点以及不足之处。</span></p><ul><li><span>第一个创新点是，使用了对抗神经网络，实现了无监督的机器学习，经过我的查阅文献资料后，其实在脑电信号领域中无监督的学习研究是比较少的。第二个创新点就是结合了多种神经网络模型，使用残差神经网络这一比较先进的架构。</span></li><li><span>不足之处在于，对于研究中选用的结构，实现起来比较困难，最后通过查看一些公开的论文代码复现了相关的结构，但是对于神经网络最底层的一些研究依然不够深入，目前只是学习了一些皮毛，能够使用与调试，达到一个相对较好的效果，还希望老师能够指导建议。另外限于机器学习速度以及时间问题，模型的各参数仍然没有调整到一个最好的水平，对于改进的提升实际上非常有限。另外，无监督的方法识别率依然较低。</span></li></ul><p><strong><span>展望：</span></strong></p><ul><li><span>由于电脑算力以及时间的限制，实验的效果仅仅在 SEED 数据集上验证。可以研究更多数据集以及不同特征。</span></li><li><span>对于超图划分仍然欠缺分析，并且本实验的模型仍然可以继续优化。</span></li></ul><p><strong><span>感谢各位老师们的聆听和指导</span></strong><span>，以上是我的汇报内容。</span></p></div></div>
+</body>
+</html>
